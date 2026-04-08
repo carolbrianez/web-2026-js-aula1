@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memória JS</title>
+    <style>
+        h1 {
+            color: lightgreen;
+        }
+    </style>
+    <script>
+        window.onload = inicio;
+        let memoria = 0;
+
+        function inicio() {
+
+            document.getElementById('btn_definir')
+                .addEventListener('click', definirValor);
+
+            document.getElementById('btn_somar')
+                .addEventListener('click', somarValor);
+
+            document.getElementById('btn_subtrair')
+                .addEventListener('click', subtrairValor);
+
+            document.getElementById('btn_zerar')
+                .addEventListener('click', zerarMemoria);
+
+            document.getElementById('btn_exibir')
+                .addEventListener('click', exibirMemoria);
+        }
+
+        function pegarNumero() {
+            let campo = document.getElementById('numero');
+            return parseInt(campo.value) || 0;
+        }
+
+        function definirValor() {
+            memoria = pegarNumero();
+        }
+
+        function somarValor() {
+            memoria += pegarNumero();
+        }
+
+        function subtrairValor() {
+            memoria -= pegarNumero();
+        }
+
+        function zerarMemoria() {
+            memoria = 0;
+        }
+
+        function exibirMemoria() {
+            let saida = document.getElementById('saida');
+            saida.innerHTML = `Memória: ${memoria}`;
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="number" id="numero">
+    <h2 id="saida"></h2>
+
+    <div class="botoes">
+        <button id="btn_definir">Definir valor</button>
+        <button id="btn_somar">Somar à memória</button>
+        <button id="btn_subtrair">Subtrair da memória</button>
+        <button id="btn_zerar">Zerar memória</button>
+        <button id="btn_exibir">Exibir memória</button>
+    </div>
+
+</body>
+
+</html>
